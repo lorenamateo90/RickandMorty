@@ -1,6 +1,7 @@
 import '../styleSheets/App.scss';
 import api from '../services/api';
 import React, { useEffect, useState } from 'react';
+import CharacterList from './CharacterList';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -10,8 +11,15 @@ const App = () => {
       setCharacters(data);
     });
   }, []);
-
-  return <div className='App'>Hola, Mundo</div>;
+  // Primero me sale un array vacío y luego los 20, si no pongo array vacío no para de hacer llamdas al servidor
+  return (
+    <>
+      <h1 className='title'>poner logo título aquí</h1>
+      <div className='container'>
+        <CharacterList characters={characters} />
+      </div>
+    </>
+  );
 };
 
 export default App;

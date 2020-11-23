@@ -9,6 +9,7 @@ const api = () => {
           id: character.id,
           name: character.name,
           species: character.species,
+          image: character.image,
         };
       });
     });
