@@ -3,6 +3,7 @@ import api from '../services/api';
 import React, { useEffect, useState } from 'react';
 import CharacterList from './CharacterList';
 import Filters from './Filters';
+import CharacterDetail from './CharacterDetail';
 
 // states
 const App = () => {
