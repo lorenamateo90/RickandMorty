@@ -2,6 +2,7 @@
 import api from '../services/api';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Loading from './Loading';
 import CharacterList from './CharacterList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
@@ -10,11 +11,14 @@ import CharacterDetail from './CharacterDetail';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [nameFilter, setNameFilter] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // fetch
   useEffect(() => {
+    setIsLoading(true);
     api().then((data) => {
       setCharacters(data);
+      setIsLoading(false);
     });
   }, []);
   // Primero me sale un array vacío y luego los 20, si no pongo array vacío no para de hacer llamdas al servidor
@@ -47,12 +51,13 @@ const App = () => {
         />
       );
     } else {
-      return <p>no encontrado</p>;
+      return <p>El personaje que busca no existe</p>;
     }
   };
 
   return (
     <div>
+      {isLoading === true ? <Loading /> : null}
       <h1 className='title'>poner logo título aquí</h1>
       <div className='container'>
         <Filters handleFilter={handleFilter} />
