@@ -10,6 +10,9 @@ const api = () => {
           name: character.name,
           species: character.species,
           image: character.image,
+          status: character.status,
+          episodes: character.episode.length,
+          origin: character.origin.name,
         };
       });
     });

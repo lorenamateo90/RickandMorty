@@ -1,6 +1,7 @@
-import '../styleSheets/App.scss';
+// import '../styleSheets/App.scss';
 import api from '../services/api';
 import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import CharacterList from './CharacterList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
@@ -29,12 +30,41 @@ const App = () => {
     return character.name.toUpperCase().includes(nameFilter.toUpperCase());
   });
 
+  const renderCharacterDetail = (props) => {
+    const routeCharacterId = parseInt(props.match.params.id);
+    const foundCharacter = characters.find((character) => {
+      return routeCharacterId === character.id;
+    });
+    if (foundCharacter) {
+      return (
+        <CharacterDetail
+          image={foundCharacter.image}
+          name={foundCharacter.name}
+          species={foundCharacter.species}
+          origin={foundCharacter.origin}
+          episodes={foundCharacter.episodes}
+          status={foundCharacter.status}
+        />
+      );
+    } else {
+      return <p>no encontrado</p>;
+    }
+  };
+
   return (
     <div>
       <h1 className='title'>poner logo título aquí</h1>
       <div className='container'>
         <Filters handleFilter={handleFilter} />
-        <CharacterList characters={filteredCharacters} />
+        <Switch>
+          <Route exact path='/'>
+            <CharacterList
+              nameFilter={nameFilter}
+              characters={filteredCharacters}
+            />
+          </Route>
+          <Route path='/character/:id' component={renderCharacterDetail} />
+        </Switch>
       </div>
     </div>
   );
