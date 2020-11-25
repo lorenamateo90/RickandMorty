@@ -22,7 +22,6 @@ const App = () => {
       setIsLoading(false);
     });
   }, []);
-  // Primero me sale un array vacío y luego los 20, si no pongo array vacío no para de hacer llamdas al servidor
 
   // event handler
   const handleFilter = (data) => {
