@@ -1,0 +1,32 @@
+.detail {
+  display: flex;
+  text-transform: uppercase;
+  width: 400px;
+  margin: auto;
+
+  &__section {
+    border-radius: 35px;
+    box-shadow: 0px 0px 30px #ffffff;
+    color: white;
+    background-color: rgb(80, 225, 235);
+    text-align: center;
+    font-size: 15px;
+  }
+  &__img {
+    border-radius: 35px;
+  }
+  &__name {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.button {
+  color: black;
+  background-color: rgb(80, 225, 235);
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  border-radius: 0 0 35px 35px;
+}

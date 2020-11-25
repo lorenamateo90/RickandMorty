@@ -1,7 +1,8 @@
 import React from 'react';
 import FilterByName from './FilterByName';
-// import "../../stylesheets/Filters.scss";
+import '../styleSheets/Filters.scss';
 
+// controlamos el input con el preventDefault
 const Filters = (props) => {
   const preventEvent = (ev) => {
     ev.preventDefault(ev);

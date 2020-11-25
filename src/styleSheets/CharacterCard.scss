@@ -1,0 +1,23 @@
+.item__card {
+  &--list {
+    margin: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 30px #ffffff;
+    border-radius: 50px;
+    text-transform: uppercase;
+  }
+
+  &--img {
+    border-radius: 50px;
+  }
+  &--title {
+    font-size: 17px;
+    color: white;
+  }
+  &--description {
+    color: rgb(80, 235, 80);
+  }
+}

@@ -1,4 +1,4 @@
-// import '../styleSheets/App.scss';
+import '../styleSheets/App.scss';
 import api from '../services/api';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -6,6 +6,7 @@ import Loading from './Loading';
 import CharacterList from './CharacterList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
+import logo from '../images/logo.png';
 
 // states
 const App = () => {
@@ -34,6 +35,13 @@ const App = () => {
     return character.name.toUpperCase().includes(nameFilter.toUpperCase());
   });
 
+  //Organizamos los personajes por orden alfabético
+  characters.sort(function (a, b) {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  });
+
   const renderCharacterDetail = (props) => {
     const routeCharacterId = parseInt(props.match.params.id);
     const foundCharacter = characters.find((character) => {
@@ -56,20 +64,24 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       {isLoading === true ? <Loading /> : null}
-      <h1 className='title'>poner logo título aquí</h1>
-      <div className='container'>
-        <Filters handleFilter={handleFilter} />
-        <Switch>
-          <Route exact path='/'>
-            <CharacterList
-              nameFilter={nameFilter}
-              characters={filteredCharacters}
-            />
-          </Route>
-          <Route path='/character/:id' component={renderCharacterDetail} />
-        </Switch>
+      <div>
+        <header className='header'>
+          <img src={logo} alt='Rick and Morty' title='Rick and Morty' />
+        </header>
+        <main>
+          <Filters handleFilter={handleFilter} />
+          <Switch>
+            <Route exact path='/'>
+              <CharacterList
+                nameFilter={nameFilter}
+                characters={filteredCharacters}
+              />
+            </Route>
+            <Route path='/character/:id' component={renderCharacterDetail} />
+          </Switch>
+        </main>
       </div>
     </div>
   );

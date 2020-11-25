@@ -1,5 +1,5 @@
 import React from 'react';
-// import "../../stylesheets/Filters.scss";
+import '../styleSheets/FilterByName.scss';
 
 const FilterByName = (props) => {
   const handleChange = (ev) => {
@@ -9,9 +9,9 @@ const FilterByName = (props) => {
     });
   };
   return (
-    <>
+    <div className='form'>
       <label className='form__label' htmlFor='name'>
-        Filtrar por nombre:
+        Find your favorite character
       </label>
       <input
         className='form__input-text'
@@ -21,7 +21,7 @@ const FilterByName = (props) => {
         // placeholder="Busca tu personaje favorito"
         onChange={handleChange}
       />
-    </>
+    </div>
   );
 };
 
