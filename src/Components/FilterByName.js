@@ -18,7 +18,6 @@ const FilterByName = (props) => {
         type='text'
         name='name'
         id='name'
-        // placeholder="Busca tu personaje favorito"
         onChange={handleChange}
       />
     </div>
