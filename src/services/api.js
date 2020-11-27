@@ -13,6 +13,7 @@ const api = () => {
           status: character.status,
           episodes: character.episode.length,
           origin: character.origin.name,
+          gender: character.gender,
         };
       });
     });

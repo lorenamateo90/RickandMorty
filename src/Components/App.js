@@ -12,6 +12,7 @@ import logo from '../images/logo.png';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [nameFilter, setNameFilter] = useState('');
+  const [genderFilter, setGenderFilter] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   // fetch
@@ -27,12 +28,23 @@ const App = () => {
   const handleFilter = (data) => {
     if (data.key === 'nameFilter') {
       setNameFilter(data.value);
+    } else if (data.key === 'gender') {
+      setGenderFilter(data.value);
     }
   };
   //Filtrado de personajes
-  const filteredCharacters = characters.filter((character) => {
-    return character.name.toUpperCase().includes(nameFilter.toUpperCase());
-  });
+  const filteredCharacters = characters
+    .filter((character) => {
+      return character.name.toUpperCase().includes(nameFilter.toUpperCase());
+    })
+    .filter((character) => {
+      // console.log(genderFilter);
+      if (genderFilter === 'select') {
+        return character;
+      } else {
+        return character.gender === genderFilter;
+      }
+    });
 
   //Organizamos los personajes por orden alfabético
   characters.sort(function (a, b) {
@@ -75,6 +87,7 @@ const App = () => {
             <Route exact path='/'>
               <CharacterList
                 nameFilter={nameFilter}
+                genderFilter={genderFilter}
                 characters={filteredCharacters}
               />
             </Route>

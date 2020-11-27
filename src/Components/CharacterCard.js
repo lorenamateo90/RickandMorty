@@ -16,6 +16,7 @@ const CharacterCard = (props) => {
           />
           <h4 className='item__card--title'>{props.character.name}</h4>
           <p className='item__card--description'>{props.character.species}</p>
+          <p className='item__card--description'>{props.character.gender}</p>
         </li>
       </Link>
     </>
